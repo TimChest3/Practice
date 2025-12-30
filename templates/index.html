@@ -1,0 +1,34 @@
+
+**5. `templates/index.html`**  
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор финансовой траектории</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор финансовой траектории студента</h1>
+        <form method="POST">
+            <label>Стоимость обучения (руб.): <input type="number" name="tuition_fee" required></label>
+            <label>Скидки (руб.): <input type="number" name="discounts" value="0"></label>
+            <label>Гранты (руб.): <input type="number" name="grants" value="0"></label>
+            <label>Рассрочка (месяцев): <input type="number" name="installments" value="12" min="1"></label>
+            <button type="submit">Рассчитать</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                <h2>Результат расчёта</h2>
+                <p>Стоимость обучения: {{ result.tuition_fee }} ₽</p>
+                <p>Скидки: −{{ result.discounts }} ₽</p>
+                <p>Гранты: −{{ result.grants }} ₽</p>
+                <p><strong>Итого к оплате: {{ result.total_paid }} ₽</strong></p>
+                <p>Ежемесячный платёж: {{ result.monthly_payment }} ₽</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
