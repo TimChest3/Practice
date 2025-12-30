@@ -1,0 +1,9 @@
+fintech-student-calculator/
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+├── templates/
+│   └── index.html
+└── static/
+    └── style.css
